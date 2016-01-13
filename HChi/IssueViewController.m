@@ -30,6 +30,8 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar addSubview:HCNCBackgroundForSubView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

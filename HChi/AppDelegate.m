@@ -11,6 +11,7 @@
 #import "IssueViewController.h"
 #import "PersonViewController.h"
 #import "HCGlobalVariable.h"
+#import "HCTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -22,28 +23,39 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    
+    [self initHCGV];
     
     UINavigationController * rootView =[[UINavigationController alloc] initWithRootViewController: [RootViewController new]];
     UINavigationController * issueView = [[UINavigationController alloc] initWithRootViewController: [IssueViewController new]];
     UINavigationController * settingView = [[UINavigationController alloc] initWithRootViewController: [PersonViewController new]];
     NSArray * viewArray = @[rootView, issueView, settingView];
     
-    UITabBarController * tabBar = [UITabBarController new];
-    [tabBar setViewControllers: viewArray];
+    HCTabBarController * tabBarController = [HCTabBarController new];
+    [tabBarController setViewControllers: viewArray];
     
-    self.window.rootViewController = tabBar;
+//    UITabBarController * tabBarController = [UITabBarController new];
+//    [tabBarController setViewControllers: viewArray];
+    
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
-    [self initHCGV];
+    
     
     // 导航栏颜色
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    // 导航栏按钮颜色
+    [[UINavigationBar appearance] setTintColor:HCColorForTheme];
     // 去除Nav 下划线
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     // 自定义背景
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
                                        forBarMetrics:UIBarMetricsDefault];
+    // 设置底部菜单选中颜色
+//    tabBarController.tabBar.tintColor = HCColorForTheme;
     
     return YES;
 }

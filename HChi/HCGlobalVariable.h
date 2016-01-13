@@ -17,9 +17,6 @@ extern UIImageView * HCNCBackgroundForSubView;
 extern CAGradientLayer * HCNCBackgroundForRootView;
 extern CGSize ScreenSize;
 
-//extern int TableViewLoadType;
-//extern int CellIndexPath;
-
 
 
 

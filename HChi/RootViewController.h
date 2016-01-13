@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) UITableView * rootTableView;
 
+@property (nonatomic, strong) UICollectionView * rootCollectionView;
+
 @end

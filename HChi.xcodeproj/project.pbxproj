@@ -17,6 +17,8 @@
 		D40FDE751C433ACF00A32500 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE741C433ACF00A32500 /* CustomViewController.m */; };
 		D40FDE781C4342BA00A32500 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE771C4342BA00A32500 /* IssueViewController.m */; };
 		D40FDE7B1C43434D00A32500 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE7A1C43434D00A32500 /* PersonViewController.m */; };
+		D41899811C46311600830952 /* HCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899801C46311600830952 /* HCTabBarController.m */; };
+		D41899841C4634B500830952 /* HCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899831C4634B500830952 /* HCTabBarView.m */; };
 		D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D47271961C449A4A00FAE8DF /* RootViewCell.xib */; };
 		D47271BC1C44DE5E00FAE8DF /* GuessYouLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47271BB1C44DE5E00FAE8DF /* GuessYouLikeViewController.m */; };
 		D47271CC1C44EC7200FAE8DF /* img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271BE1C44EC7200FAE8DF /* img1.jpg */; };
@@ -68,6 +70,10 @@
 		D40FDE771C4342BA00A32500 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueViewController.m; sourceTree = "<group>"; };
 		D40FDE791C43434D00A32500 /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		D40FDE7A1C43434D00A32500 /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		D418997F1C46311600830952 /* HCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTabBarController.h; sourceTree = "<group>"; };
+		D41899801C46311600830952 /* HCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTabBarController.m; sourceTree = "<group>"; };
+		D41899821C4634B500830952 /* HCTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTabBarView.h; sourceTree = "<group>"; };
+		D41899831C4634B500830952 /* HCTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTabBarView.m; sourceTree = "<group>"; };
 		D47271961C449A4A00FAE8DF /* RootViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewCell.xib; sourceTree = "<group>"; };
 		D47271BA1C44DE5E00FAE8DF /* GuessYouLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessYouLikeViewController.h; sourceTree = "<group>"; };
 		D47271BB1C44DE5E00FAE8DF /* GuessYouLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessYouLikeViewController.m; sourceTree = "<group>"; };
@@ -178,6 +184,10 @@
 			children = (
 				D40FDE731C433ACF00A32500 /* CustomViewController.h */,
 				D40FDE741C433ACF00A32500 /* CustomViewController.m */,
+				D418997F1C46311600830952 /* HCTabBarController.h */,
+				D41899801C46311600830952 /* HCTabBarController.m */,
+				D41899821C4634B500830952 /* HCTabBarView.h */,
+				D41899831C4634B500830952 /* HCTabBarView.m */,
 				D472719B1C44A3A400FAE8DF /* RootView */,
 				D472719C1C44A3B000FAE8DF /* IssueView */,
 				D472719D1C44A3BA00FAE8DF /* PersonView */,
@@ -192,8 +202,6 @@
 				D49F2BF61C4384A3009644F1 /* HCGlobalVariable.m */,
 				D49F2BF21C43827C009644F1 /* TableViewDataSource.h */,
 				D49F2BF31C43827C009644F1 /* TableViewDataSource.m */,
-				D472719E1C44A3CE00FAE8DF /* RootViewCell */,
-				D47271DA1C44EE1E00FAE8DF /* PersonViewCell */,
 				D49F2BE31C436CDE009644F1 /* RootView.plist */,
 			);
 			name = Model;
@@ -202,6 +210,8 @@
 		D40FDE721C433A8B00A32500 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D472719E1C44A3CE00FAE8DF /* RootViewCell */,
+				D47271DA1C44EE1E00FAE8DF /* PersonViewCell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -403,10 +413,12 @@
 			files = (
 				D49F2BEB1C437DAC009644F1 /* RootViewCell.m in Sources */,
 				D40FDE3F1C43394100A32500 /* AppDelegate.m in Sources */,
+				D41899841C4634B500830952 /* HCTabBarView.m in Sources */,
 				D40FDE6F1C433A7900A32500 /* RootViewController.m in Sources */,
 				D40FDE781C4342BA00A32500 /* IssueViewController.m in Sources */,
 				D40FDE3C1C43394100A32500 /* main.m in Sources */,
 				D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */,
+				D41899811C46311600830952 /* HCTabBarController.m in Sources */,
 				D47271BC1C44DE5E00FAE8DF /* GuessYouLikeViewController.m in Sources */,
 				D49F2BF41C43827C009644F1 /* TableViewDataSource.m in Sources */,
 				D40FDE751C433ACF00A32500 /* CustomViewController.m in Sources */,

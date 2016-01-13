@@ -61,7 +61,6 @@ UILabel * userNickName;
     imageView.frame = headViewRect;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
-//    headView.backgroundColor = [UIColor redColor];
     [self.view addSubview:headView];
     
     // 添加模糊效果. dark暗系风格, light 亮系风格, extra light 附加额外的亮光
@@ -145,19 +144,13 @@ UILabel * userNickName;
     return 10;
 }
 
-int offsetY;
+
 #pragma mark- UIScrollView
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat y = _personTableView.contentOffset.y;
     if (y < 0) {
-        CGRect frame = imageView.frame;
-        frame.origin.y = 0;
-        frame.size.height = headViewRect.size.height + -y;
-        effectView.frame = frame;
-        imageView.frame = frame;
         
-        userHeadImage.frame = CGRectMake(ScreenSize.width / 2 - userHeadImage.frame.size.width / 2, frame.size.height - 80 - 50, 80, 80);
-        userNickName.frame = CGRectMake(ScreenSize.width / 2 - userNickName.frame.size.width / 2, userHeadImage.center.y + userHeadImage.frame.size.height / 2 + 10, userNickName.frame.size.width, userNickName.frame.size.height);
+        [self resetHeadViewFrame:y];
         
     } else {
         CGRect frame = imageView.frame;
@@ -166,6 +159,16 @@ int offsetY;
     }
 }
 
+- (void)resetHeadViewFrame:(CGFloat)y {
+    CGRect frame = imageView.frame;
+    frame.origin.y = 0;
+    frame.size.height = headViewRect.size.height + -y;
+    effectView.frame = frame;
+    imageView.frame = frame;
+    
+    userHeadImage.frame = CGRectMake(ScreenSize.width / 2 - userHeadImage.frame.size.width / 2, frame.size.height - 80 - 50, 80, 80);
+    userNickName.frame = CGRectMake(ScreenSize.width / 2 - userNickName.frame.size.width / 2, userHeadImage.center.y + userHeadImage.frame.size.height / 2 + 10, userNickName.frame.size.width, userNickName.frame.size.height);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
