@@ -11,10 +11,12 @@
 #import "TableViewDataSource.h"
 #import "RootViewCell.h"
 #import "GuessYouLikeViewController.h"
+#import "CollectionViewLayout.h"
+#import "RootViewCollectionViewCell.h"
 
 static NSString * const RootViewCellIdentifier = @"RootCell";
 
-@interface RootViewController ()<UITableViewDelegate>
+@interface RootViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, CollectionViewFlowLayoutProtocol>
 
 @property (nonatomic, strong) TableViewDataSource * rootViewCellDataSource;
 
@@ -22,7 +24,9 @@ static NSString * const RootViewCellIdentifier = @"RootCell";
 
 @implementation RootViewController
 
+UIScrollView * guessYouLikeScrollView;
 CGRect scrollViewRect;
+
 
 #pragma mark 初始化 init
 - (instancetype)init
@@ -66,8 +70,43 @@ CGRect scrollViewRect;
     
     
     #pragma mark 创建CollectionView
+    _rootCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    _rootCollectionView.delegate = self;
+    _rootCollectionView.dataSource = self;
+    
+    CollectionViewLayout * layout = [CollectionViewLayout new];
+    layout.delegate = self;
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    _rootCollectionView.collectionViewLayout = layout;
+    
+    _rootCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    _rootCollectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
+    
+    _rootCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    _rootCollectionView.contentSize = CGSizeMake(ScreenSize.width, ScreenSize.height*2);
+    [_rootCollectionView registerClass:[RootViewCollectionViewCell class] forCellWithReuseIdentifier:RootViewCellIdentifier];
+    [self.view addSubview:_rootCollectionView];
     
     
+    guessYouLikeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewRect];
+    guessYouLikeScrollView.contentSize = CGSizeMake(ScreenSize.width * 4, scrollViewRect.size.height);
+    guessYouLikeScrollView.pagingEnabled = true;
+    guessYouLikeScrollView.bounces = false;
+    guessYouLikeScrollView.showsHorizontalScrollIndicator = false;
+    guessYouLikeScrollView.delegate = self;
+    
+    for (int i = 0; i<4; i++) {
+        UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"img%d.jpg", i + 1]];
+        UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(ScreenSize.width * i, 0, ScreenSize.width, scrollViewRect.size.height);
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.clipsToBounds = true;
+        [guessYouLikeScrollView addSubview:imageView];
+    }
+    guessYouLikeScrollView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:guessYouLikeScrollView];
 }
 
 #pragma TODO
@@ -117,10 +156,51 @@ CGRect scrollViewRect;
 //    }
 //}
 
+#pragma mark- UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
 
-#pragma mark- UICollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 20;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RootViewCellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor lightTextColor];
+    return cell;
+}
 
+#pragma mark- UICollectionViewFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return CGSizeMake(ScreenSize.width, 240);
+    }
+    return CGSizeMake(ScreenSize.width, 44);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat y = _rootCollectionView.contentOffset.y;
+    [self resetHeadViewFrame:y];
+}
+
+- (void)resetHeadViewFrame:(CGFloat)y {
+    CGRect frame = guessYouLikeScrollView.frame;
+    if (y < 0) {
+        frame.origin.y = 0;
+        frame.size.height = scrollViewRect.size.height - y;
+        guessYouLikeScrollView.frame = frame;
+    } else if (-y < scrollViewRect.size.height) {
+        NSLog(@"123123");
+    } else {
+        frame.origin.y = -y;
+        guessYouLikeScrollView.frame = frame;
+    }
+}
+
+- (CGSize)reWithIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(0, 0);
+}
 
 
 - (void)didReceiveMemoryWarning {

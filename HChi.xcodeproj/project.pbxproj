@@ -19,11 +19,13 @@
 		D40FDE7B1C43434D00A32500 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE7A1C43434D00A32500 /* PersonViewController.m */; };
 		D41899811C46311600830952 /* HCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899801C46311600830952 /* HCTabBarController.m */; };
 		D41899841C4634B500830952 /* HCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899831C4634B500830952 /* HCTabBarView.m */; };
+		D41899871C4643C100830952 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899861C4643C100830952 /* CollectionViewLayout.m */; };
+		D418998A1C4646B800830952 /* RootViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899891C4646B800830952 /* RootViewCollectionViewCell.m */; };
+		D418998C1C46524700830952 /* img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D418998B1C46524700830952 /* img1.jpg */; };
 		D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D47271961C449A4A00FAE8DF /* RootViewCell.xib */; };
 		D47271BC1C44DE5E00FAE8DF /* GuessYouLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47271BB1C44DE5E00FAE8DF /* GuessYouLikeViewController.m */; };
-		D47271CC1C44EC7200FAE8DF /* img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271BE1C44EC7200FAE8DF /* img1.jpg */; };
+		D47271CC1C44EC7200FAE8DF /* img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271BE1C44EC7200FAE8DF /* img3.jpg */; };
 		D47271CE1C44EC7200FAE8DF /* img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271C01C44EC7200FAE8DF /* img2.jpg */; };
-		D47271CF1C44EC7200FAE8DF /* img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271C11C44EC7200FAE8DF /* img3.jpg */; };
 		D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47271DC1C44EE3400FAE8DF /* PersonViewCell.m */; };
 		D49F2BE41C436CDE009644F1 /* RootView.plist in Resources */ = {isa = PBXBuildFile; fileRef = D49F2BE31C436CDE009644F1 /* RootView.plist */; };
 		D49F2BEB1C437DAC009644F1 /* RootViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F2BEA1C437DAC009644F1 /* RootViewCell.m */; };
@@ -74,12 +76,16 @@
 		D41899801C46311600830952 /* HCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTabBarController.m; sourceTree = "<group>"; };
 		D41899821C4634B500830952 /* HCTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTabBarView.h; sourceTree = "<group>"; };
 		D41899831C4634B500830952 /* HCTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTabBarView.m; sourceTree = "<group>"; };
+		D41899851C4643C100830952 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
+		D41899861C4643C100830952 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
+		D41899881C4646B800830952 /* RootViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewCollectionViewCell.h; sourceTree = "<group>"; };
+		D41899891C4646B800830952 /* RootViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewCollectionViewCell.m; sourceTree = "<group>"; };
+		D418998B1C46524700830952 /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
 		D47271961C449A4A00FAE8DF /* RootViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewCell.xib; sourceTree = "<group>"; };
 		D47271BA1C44DE5E00FAE8DF /* GuessYouLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessYouLikeViewController.h; sourceTree = "<group>"; };
 		D47271BB1C44DE5E00FAE8DF /* GuessYouLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessYouLikeViewController.m; sourceTree = "<group>"; };
-		D47271BE1C44EC7200FAE8DF /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
+		D47271BE1C44EC7200FAE8DF /* img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img3.jpg; sourceTree = "<group>"; };
 		D47271C01C44EC7200FAE8DF /* img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img2.jpg; sourceTree = "<group>"; };
-		D47271C11C44EC7200FAE8DF /* img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img3.jpg; sourceTree = "<group>"; };
 		D47271DB1C44EE3400FAE8DF /* PersonViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewCell.h; sourceTree = "<group>"; };
 		D47271DC1C44EE3400FAE8DF /* PersonViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewCell.m; sourceTree = "<group>"; };
 		D49F2BE31C436CDE009644F1 /* RootView.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RootView.plist; sourceTree = "<group>"; };
@@ -221,6 +227,8 @@
 			children = (
 				D40FDE6D1C433A7900A32500 /* RootViewController.h */,
 				D40FDE6E1C433A7900A32500 /* RootViewController.m */,
+				D41899851C4643C100830952 /* CollectionViewLayout.h */,
+				D41899861C4643C100830952 /* CollectionViewLayout.m */,
 				D47271BA1C44DE5E00FAE8DF /* GuessYouLikeViewController.h */,
 				D47271BB1C44DE5E00FAE8DF /* GuessYouLikeViewController.m */,
 			);
@@ -251,6 +259,8 @@
 				D49F2BE91C437DAC009644F1 /* RootViewCell.h */,
 				D49F2BEA1C437DAC009644F1 /* RootViewCell.m */,
 				D47271961C449A4A00FAE8DF /* RootViewCell.xib */,
+				D41899881C4646B800830952 /* RootViewCollectionViewCell.h */,
+				D41899891C4646B800830952 /* RootViewCollectionViewCell.m */,
 			);
 			name = RootViewCell;
 			sourceTree = "<group>";
@@ -258,9 +268,9 @@
 		D47271BD1C44EC7200FAE8DF /* imag */ = {
 			isa = PBXGroup;
 			children = (
-				D47271BE1C44EC7200FAE8DF /* img1.jpg */,
+				D418998B1C46524700830952 /* img1.jpg */,
+				D47271BE1C44EC7200FAE8DF /* img3.jpg */,
 				D47271C01C44EC7200FAE8DF /* img2.jpg */,
-				D47271C11C44EC7200FAE8DF /* img3.jpg */,
 			);
 			path = imag;
 			sourceTree = "<group>";
@@ -380,9 +390,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47271CC1C44EC7200FAE8DF /* img1.jpg in Resources */,
+				D47271CC1C44EC7200FAE8DF /* img3.jpg in Resources */,
 				D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */,
-				D47271CF1C44EC7200FAE8DF /* img3.jpg in Resources */,
+				D418998C1C46524700830952 /* img1.jpg in Resources */,
 				D40FDE4A1C43394100A32500 /* LaunchScreen.storyboard in Resources */,
 				D49F2BE41C436CDE009644F1 /* RootView.plist in Resources */,
 				D40FDE471C43394100A32500 /* Assets.xcassets in Resources */,
@@ -419,6 +429,8 @@
 				D40FDE3C1C43394100A32500 /* main.m in Sources */,
 				D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */,
 				D41899811C46311600830952 /* HCTabBarController.m in Sources */,
+				D418998A1C4646B800830952 /* RootViewCollectionViewCell.m in Sources */,
+				D41899871C4643C100830952 /* CollectionViewLayout.m in Sources */,
 				D47271BC1C44DE5E00FAE8DF /* GuessYouLikeViewController.m in Sources */,
 				D49F2BF41C43827C009644F1 /* TableViewDataSource.m in Sources */,
 				D40FDE751C433ACF00A32500 /* CustomViewController.m in Sources */,

@@ -64,7 +64,7 @@ UILabel * userNickName;
     [self.view addSubview:headView];
     
     // 添加模糊效果. dark暗系风格, light 亮系风格, extra light 附加额外的亮光
-    UIBlurEffect * blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIBlurEffect * blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectView.frame = headViewRect;
     [imageView addSubview:effectView];
@@ -149,9 +149,7 @@ UILabel * userNickName;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat y = _personTableView.contentOffset.y;
     if (y < 0) {
-        
         [self resetHeadViewFrame:y];
-        
     } else {
         CGRect frame = imageView.frame;
         frame.origin.y = -y;
