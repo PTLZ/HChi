@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99F4672A1C477A25006DA752 /* neirong.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99F467291C477A25006DA752 /* neirong.plist */; };
 		D40FDE3C1C43394100A32500 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE3B1C43394100A32500 /* main.m */; };
 		D40FDE3F1C43394100A32500 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE3E1C43394100A32500 /* AppDelegate.m */; };
 		D40FDE471C43394100A32500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40FDE461C43394100A32500 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99F467291C477A25006DA752 /* neirong.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = neirong.plist; sourceTree = "<group>"; };
 		D40FDE371C43394100A32500 /* HChi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HChi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40FDE3B1C43394100A32500 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D40FDE3D1C43394100A32500 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		D40FDE711C433A8500A32500 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99F467291C477A25006DA752 /* neirong.plist */,
 				D49F2BF51C4384A3009644F1 /* HCGlobalVariable.h */,
 				D49F2BF61C4384A3009644F1 /* HCGlobalVariable.m */,
 				D49F2BF21C43827C009644F1 /* TableViewDataSource.h */,
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D47271CC1C44EC7200FAE8DF /* img3.jpg in Resources */,
+				99F4672A1C477A25006DA752 /* neirong.plist in Resources */,
 				D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */,
 				D418998C1C46524700830952 /* img1.jpg in Resources */,
 				D40FDE4A1C43394100A32500 /* LaunchScreen.storyboard in Resources */,
