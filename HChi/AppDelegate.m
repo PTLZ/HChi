@@ -77,7 +77,7 @@
                                          (id)[HCColorForRootView colorWithAlphaComponent:0.4].CGColor,
                                          (id)[HCColorForRootView colorWithAlphaComponent:0.1].CGColor,
                                          (id)[HCColorForRootView colorWithAlphaComponent:0.0].CGColor];
-    HCNCBackgroundForRootView.locations = @[@(0.3), @(0.5), @(0.7), @(1.0)];
+    HCNCBackgroundForRootView.locations = @[@(0.1), @(0.4), @(0.6), @(1.0)];
     
     // SubView
     HCNCBackgroundForSubView = [UIImageView new];

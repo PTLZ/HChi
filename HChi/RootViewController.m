@@ -131,9 +131,30 @@ CGRect searchBarRect;
     
     #pragma mark 添加搜索框
     CGSize searchBarSize = CGSizeMake(ScreenSize.width - 40, 40);
-    searchBarRect = CGRectMake((ScreenSize.width - searchBarSize.width) / 2, scrollViewRect.size.height - searchBarSize.height - 30, searchBarSize.width, searchBarSize.height);
+    searchBarRect = CGRectMake((ScreenSize.width - searchBarSize.width) / 2, scrollViewRect.size.height - searchBarSize.height - 10, searchBarSize.width, searchBarSize.height);
     searchBar = [[UISearchBar alloc] initWithFrame:searchBarRect];
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//    searchBar.placeholder = @"搜索菜谱、食材、季节等";
+    searchBar.translucent = false;
+//    searchBar.tintColor = HCColorForTheme;
+    searchBar.barTintColor = HCColorForTheme;
+    
+    // 遍历searchBar 中的子视图
+    for (UIView * subview in [[searchBar.subviews lastObject] subviews]) {
+        // 找到子视图中的 UITextField
+        if ([subview isKindOfClass:[UITextField class]]) {
+            UITextField * textField = (UITextField *)subview;
+            textField.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+//            textField.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+//            textField.layer.borderColor = [[UIColor lightTextColor] colorWithAlphaComponent:0.5].CGColor;
+//            textField.layer.borderWidth = 1;
+//            textField.layer.cornerRadius = 5;
+            textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索菜谱、食材、季节等" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        } else if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+        }
+    }
+    
     [self.view addSubview:searchBar];
 }
 
@@ -143,14 +164,15 @@ CGRect searchBarRect;
 }
 
 #pragma mark- UICollectionViewDataSource
-
+#pragma mark 返回节
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
-
+#pragma mark 返回行
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return 50;
 }
+#pragma mark 渲染cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RootViewCellIdentifier forIndexPath:indexPath];
     
@@ -158,35 +180,33 @@ CGRect searchBarRect;
     return cell;
 }
 
-#pragma mark- UICollectionViewFlowLayout
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == 0) {
-//        return CGSizeMake(ScreenSize.width, scrollViewRect.size.height);
-//    } else if (indexPath.row == 1) {
-//        return CGSizeMake(ScreenSize.width, 60);
-//    } else {
-//        return CGSizeMake(ScreenSize.width/5 - 2, 44);
-//    }
-//    
-//}
 
-// 滚动停止后触发
+#pragma mark- UIScrollViewDelegate
+#pragma mark 滚动停止后触发
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // scrollView 当前页面
     int cureentPage = (int)(dailyRecommendScrollView.contentOffset.x / ScreenSize.width);
     cureentImage = [self backScrollViewContent:cureentPage];
 }
 
-// 边滚动边触发
+#pragma mark 边滚动边触发
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat y = _rootCollectionView.contentOffset.y;
+    // 改变位置信息
     [self resetHeadViewFrame:y];
+    /*
+    // 改变导航栏
+    if (y > scrollViewRect.size.height - 64) {
+        UIColor * color = (UIColor *)HCNCBackgroundForRootView.backgroundColor;
+        color = [color colorWithAlphaComponent:1.0];
+        HCNCBackgroundForRootView.backgroundColor = color.CGColor;
+    }
+     */
 }
-
 - (UIImageView *)backScrollViewContent:(int)index {
     return dailyRecommendScrollViewContents[index];
 }
-
+#pragma mark 滑动时改变位置信息
 - (void)resetHeadViewFrame:(CGFloat)y {
     
     if (cureentImage == nil) {
@@ -210,14 +230,14 @@ CGRect searchBarRect;
         
     } else if (y > scrollViewRect.size.height - 64) {
         
-        self.navigationController.navigationBar.hidden = true;
+//        self.navigationController.navigationBar.hidden = true;
         frame.origin.y = -y;
         dailyRecommendScrollView.frame = frame;
         
         searchBarFrame.origin.y = searchBarRect.origin.y + -y;
         searchBar.frame = searchBarFrame;
     } else {
-        self.navigationController.navigationBar.hidden = false;
+//        self.navigationController.navigationBar.hidden = false;
         frame.origin.y = -y;
         dailyRecommendScrollView.frame = frame;
         
@@ -227,7 +247,7 @@ CGRect searchBarRect;
 }
 
 
-
+#pragma mark- 自定义协议方法实现CollectionViewFlowLayoutProtocol
 - (CGSize)reWithIndexPath:(NSIndexPath *)indexPath {
     
     long int oddNumber = indexPath.row;
@@ -237,8 +257,10 @@ CGRect searchBarRect;
         return CGSizeMake(ScreenSize.width, 60);
     } else if (oddNumber == 2) {
         return CGSizeMake(ScreenSize.width, 20);
-    } else {
+    } else if (oddNumber >=3 && oddNumber < 18){
         return CGSizeMake(ScreenSize.width / 5, 34);
+    } else {
+        return CGSizeMake(ScreenSize.width, 60);
     }
 }
 
