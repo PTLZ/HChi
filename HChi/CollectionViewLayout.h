@@ -18,4 +18,9 @@
 
 @property (nonatomic, strong) id<CollectionViewFlowLayoutProtocol> delegate;
 
+@property NSMutableArray * allAttributes;
+
+@property CGFloat maxY1;
+@property CGFloat maxY2;
+
 @end

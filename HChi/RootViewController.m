@@ -24,9 +24,18 @@ static NSString * const RootViewCellIdentifier = @"RootCell";
 
 @implementation RootViewController
 
-UIScrollView * guessYouLikeScrollView;
+/// 每日推荐 scroll View
+UIScrollView * dailyRecommendScrollView;
+/// scrollView 的位置信息
 CGRect scrollViewRect;
-
+/// scrollView 的内容: UIImageView
+NSMutableArray * dailyRecommendScrollViewContents;
+/// scrollView 当前显示的Image
+UIImageView * cureentImage;
+/// 搜索框
+UISearchBar * searchBar;
+/// 搜索框位置信息
+CGRect searchBarRect;
 
 #pragma mark 初始化 init
 - (instancetype)init
@@ -46,8 +55,12 @@ CGRect scrollViewRect;
     [self initView];
 }
 
+#pragma mark 初始化视图: 给视图添加内容
 - (void)initView {
-    scrollViewRect = CGRectMake(0, 0, ScreenSize.width, 240);
+    // 初始化每日推荐的内容
+    dailyRecommendScrollViewContents = [NSMutableArray new];
+    // 定义每日推荐的位置信息
+    scrollViewRect = CGRectMake(0, 0, ScreenSize.width, 280);
     
 //    _rootTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height) style:UITableViewStyleGrouped];
 //    TableViewCellConfigureBlock rootViewCellConfigureBlock = ^(RootViewCell* rootCell, NSDictionary* dic) {
@@ -66,10 +79,11 @@ CGRect scrollViewRect;
 //    [_rootTableView registerNib:[RootViewCell nib] forCellReuseIdentifier:RootViewCellIdentifier];
 //    [self.view addSubview:_rootTableView];
     
+    // 设置导航栏右边的按钮为搜索按钮🔍
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
     
     
-    #pragma mark 创建CollectionView
+    #pragma mark 创建CollectionView: 根视图
     _rootCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height) collectionViewLayout:[UICollectionViewFlowLayout new]];
     _rootCollectionView.delegate = self;
     _rootCollectionView.dataSource = self;
@@ -77,84 +91,56 @@ CGRect scrollViewRect;
     CollectionViewLayout * layout = [CollectionViewLayout new];
     layout.delegate = self;
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 0.5;
     
     _rootCollectionView.collectionViewLayout = layout;
-    
-    _rootCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    // 内容滚动范围
+    _rootCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 49 + 10, 0);
+    // 右侧滑动条滚动范围
     _rootCollectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
-    
+    // 设置collectionView 总是可以上下滑动
+    _rootCollectionView.alwaysBounceVertical = true;
+    // 隐藏右侧滚动条
+    _rootCollectionView.showsVerticalScrollIndicator = false;
     _rootCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     _rootCollectionView.contentSize = CGSizeMake(ScreenSize.width, ScreenSize.height*2);
     [_rootCollectionView registerClass:[RootViewCollectionViewCell class] forCellWithReuseIdentifier:RootViewCellIdentifier];
     [self.view addSubview:_rootCollectionView];
     
-    
-    guessYouLikeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewRect];
-    guessYouLikeScrollView.contentSize = CGSizeMake(ScreenSize.width * 4, scrollViewRect.size.height);
-    guessYouLikeScrollView.pagingEnabled = true;
-    guessYouLikeScrollView.bounces = false;
-    guessYouLikeScrollView.showsHorizontalScrollIndicator = false;
-    guessYouLikeScrollView.delegate = self;
+    #pragma mark 添加ScrollView: 每日推荐
+    dailyRecommendScrollView = [[UIScrollView alloc] initWithFrame:scrollViewRect];
+    dailyRecommendScrollView.contentSize = CGSizeMake(ScreenSize.width * 4, scrollViewRect.size.height);
+    dailyRecommendScrollView.pagingEnabled = true;
+    dailyRecommendScrollView.bounces = false;
+    dailyRecommendScrollView.showsHorizontalScrollIndicator = false;
+    dailyRecommendScrollView.delegate = self;
     
     for (int i = 0; i<4; i++) {
         UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"img%d.jpg", i + 1]];
         UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
         imageView.frame = CGRectMake(ScreenSize.width * i, 0, ScreenSize.width, scrollViewRect.size.height);
-        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = true;
-        [guessYouLikeScrollView addSubview:imageView];
+        [dailyRecommendScrollView addSubview:imageView];
+        [dailyRecommendScrollViewContents addObject:imageView];
     }
-    guessYouLikeScrollView.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:guessYouLikeScrollView];
+    [self.view addSubview:dailyRecommendScrollView];
+    
+    
+    #pragma mark 添加搜索框
+    CGSize searchBarSize = CGSizeMake(ScreenSize.width - 40, 40);
+    searchBarRect = CGRectMake((ScreenSize.width - searchBarSize.width) / 2, scrollViewRect.size.height - searchBarSize.height - 30, searchBarSize.width, searchBarSize.height);
+    searchBar = [[UISearchBar alloc] initWithFrame:searchBarRect];
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    [self.view addSubview:searchBar];
 }
 
 #pragma TODO
 - (void)search {
     NSLog(@"点击了搜索按钮");
 }
-
-#pragma mark- UITableViewDelegate
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView deselectRowAtIndexPath:indexPath animated:true];
-//    if (indexPath.section == 0) {
-//        [self.navigationController pushViewController:[GuessYouLikeViewController new] animated:true];
-//    }
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return scrollViewRect.size.height + 10;
-//    } else {
-//        return 10;
-//    }
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        
-//        UIScrollView * guessYouLikeScrollView = [[UIScrollView alloc] initWithFrame:scrollViewRect];
-//        guessYouLikeScrollView.contentSize = CGSizeMake(ScreenSize.width * 4, scrollViewRect.size.height);
-//        guessYouLikeScrollView.pagingEnabled = true;
-//        guessYouLikeScrollView.bounces = false;
-//        guessYouLikeScrollView.showsHorizontalScrollIndicator = false;
-//        guessYouLikeScrollView.delegate = self;
-//        
-//        for (int i = 0; i<4; i++) {
-//            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"img%d.jpg", i + 1]];
-//            UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
-//            imageView.frame = CGRectMake(ScreenSize.width * i, 0, ScreenSize.width, scrollViewRect.size.height);
-//            [guessYouLikeScrollView addSubview:imageView];
-//        }
-//        
-//        return guessYouLikeScrollView;
-//        
-//    } else {
-//        
-//        return [UIView new];
-//        
-//    }
-//}
 
 #pragma mark- UICollectionViewDataSource
 
@@ -167,39 +153,93 @@ CGRect scrollViewRect;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RootViewCellIdentifier forIndexPath:indexPath];
+    
     cell.backgroundColor = [UIColor lightTextColor];
     return cell;
 }
 
 #pragma mark- UICollectionViewFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return CGSizeMake(ScreenSize.width, 240);
-    }
-    return CGSizeMake(ScreenSize.width, 44);
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.row == 0) {
+//        return CGSizeMake(ScreenSize.width, scrollViewRect.size.height);
+//    } else if (indexPath.row == 1) {
+//        return CGSizeMake(ScreenSize.width, 60);
+//    } else {
+//        return CGSizeMake(ScreenSize.width/5 - 2, 44);
+//    }
+//    
+//}
+
+// 滚动停止后触发
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // scrollView 当前页面
+    int cureentPage = (int)(dailyRecommendScrollView.contentOffset.x / ScreenSize.width);
+    cureentImage = [self backScrollViewContent:cureentPage];
 }
 
+// 边滚动边触发
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat y = _rootCollectionView.contentOffset.y;
     [self resetHeadViewFrame:y];
 }
 
+- (UIImageView *)backScrollViewContent:(int)index {
+    return dailyRecommendScrollViewContents[index];
+}
+
 - (void)resetHeadViewFrame:(CGFloat)y {
-    CGRect frame = guessYouLikeScrollView.frame;
+    
+    if (cureentImage == nil) {
+        cureentImage = [self backScrollViewContent:0];
+    }
+    //
+    CGRect frame = dailyRecommendScrollView.frame;
+    CGRect cureentImageFrame = cureentImage.frame;
+    CGRect searchBarFrame = searchBar.frame;
     if (y < 0) {
         frame.origin.y = 0;
         frame.size.height = scrollViewRect.size.height - y;
-        guessYouLikeScrollView.frame = frame;
-    } else if (-y < scrollViewRect.size.height) {
-        NSLog(@"123123");
-    } else {
+        dailyRecommendScrollView.frame = frame;
+        
+        cureentImageFrame.origin.y = 0;
+        cureentImageFrame.size.height = frame.size.height;
+        cureentImage.frame = cureentImageFrame;
+        
+        searchBarFrame.origin.y = searchBarRect.origin.y + -y;
+        searchBar.frame = searchBarFrame;
+        
+    } else if (y > scrollViewRect.size.height - 64) {
+        
+        self.navigationController.navigationBar.hidden = true;
         frame.origin.y = -y;
-        guessYouLikeScrollView.frame = frame;
+        dailyRecommendScrollView.frame = frame;
+        
+        searchBarFrame.origin.y = searchBarRect.origin.y + -y;
+        searchBar.frame = searchBarFrame;
+    } else {
+        self.navigationController.navigationBar.hidden = false;
+        frame.origin.y = -y;
+        dailyRecommendScrollView.frame = frame;
+        
+        searchBarFrame.origin.y = searchBarRect.origin.y + -y;
+        searchBar.frame = searchBarFrame;
     }
 }
 
+
+
 - (CGSize)reWithIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(0, 0);
+    
+    long int oddNumber = indexPath.row;
+    if (oddNumber == 0) {
+        return CGSizeMake(ScreenSize.width, scrollViewRect.size.height);
+    } else if (oddNumber == 1) {
+        return CGSizeMake(ScreenSize.width, 60);
+    } else if (oddNumber == 2) {
+        return CGSizeMake(ScreenSize.width, 20);
+    } else {
+        return CGSizeMake(ScreenSize.width / 5, 34);
+    }
 }
 
 

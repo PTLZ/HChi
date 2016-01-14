@@ -26,7 +26,7 @@ CGPoint tabBarIconPoint;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         tabBarIconSize = CGSizeMake(30, 30);
         tabBarIconPoint = CGPointMake(0, 2);
