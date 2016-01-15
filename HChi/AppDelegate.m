@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "IssueViewController.h"
 #import "PersonViewController.h"
 #import "HCGlobalVariable.h"
 #import "HCTabBarController.h"
@@ -31,17 +30,15 @@
     [self initHCGV];
     
     UINavigationController * rootView =[[UINavigationController alloc] initWithRootViewController: [RootViewController new]];
-    UINavigationController * issueView = [[UINavigationController alloc] initWithRootViewController: [IssueViewController new]];
+//    UINavigationController * issueView = [[UINavigationController alloc] initWithRootViewController: [UIPageViewController new]];
     UINavigationController * settingView = [[UINavigationController alloc] initWithRootViewController: [PersonViewController new]];
-    NSArray * viewArray = @[rootView, issueView, settingView];
+    NSArray * viewArray = @[rootView, settingView];
     
     HCTabBarController * tabBarController = [HCTabBarController new];
     [tabBarController setViewControllers: viewArray];
     
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
-    
-    
     
     // 导航栏颜色
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];

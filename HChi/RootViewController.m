@@ -105,7 +105,7 @@ CGFloat _rootViewOldOffset = 0;
     _dailyRecommendScrollView.showsHorizontalScrollIndicator = false;
     _dailyRecommendScrollView.delegate = self;
     
-    for (int i = 0; i<4; i++) {
+    for (int i = 0; i<3; i++) {
         UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"img%d.jpg", i + 1]];
         UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
         imageView.frame = CGRectMake(ScreenSize.width * i, 0, ScreenSize.width, _scrollViewRect.size.height);
@@ -114,6 +114,11 @@ CGFloat _rootViewOldOffset = 0;
         [_dailyRecommendScrollView addSubview:imageView];
         [_dailyRecommendScrollViewContents addObject:imageView];
     }
+    UIImageView * imageView = (UIImageView *)_dailyRecommendScrollViewContents[0];
+    imageView.image =[UIImage imageNamed:@"img1.jpg"];
+    imageView.frame = CGRectMake(ScreenSize.width * 3, 0, ScreenSize.width, _scrollViewRect.size.height);
+    [_dailyRecommendScrollView addSubview:imageView];
+    [_dailyRecommendScrollViewContents addObject:imageView];
     [self.view addSubview:_dailyRecommendScrollView];
     
     
@@ -174,6 +179,9 @@ CGFloat _rootViewOldOffset = 0;
     int cureentPage = (int)(_dailyRecommendScrollView.contentOffset.x / ScreenSize.width);
     _cureentImage = [self backScrollViewContent:cureentPage];
     
+    if (cureentPage >= 3) {
+        _dailyRecommendScrollView.contentOffset = CGPointMake(0, 0);
+    }
     
 }
 
@@ -253,7 +261,7 @@ CGFloat _rootViewOldOffset = 0;
     if (oddNumber == 0) {
         return CGSizeMake(ScreenSize.width, _scrollViewRect.size.height);
     } else if (oddNumber == 1) {
-        return CGSizeMake(ScreenSize.width, 60);
+        return CGSizeMake(ScreenSize.width, 80);
     } else if (oddNumber == 2) {
         return CGSizeMake(ScreenSize.width, 20);
     } else if (oddNumber >=3 && oddNumber < 18){

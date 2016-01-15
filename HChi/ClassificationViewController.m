@@ -68,6 +68,7 @@ CGFloat _classificationViewOldOffset = 0;
     _classificationTableView.tableFooterView = [UIView new];
     _classificationTableView.delegate = self;
     _classificationTableView.dataSource = self;
+    _classificationTableView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
     _classificationTableView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6];
     [_classificationTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:true scrollPosition:UITableViewScrollPositionNone];
     [self reloadCollectionView:[NSIndexPath indexPathForRow:0 inSection:0]];
@@ -148,7 +149,7 @@ CGFloat _classificationViewOldOffset = 0;
     NSDictionary * fontAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:HCThemeFontSize]};
     NSString * text = _collectionViewCellDataArray[indexPath.row];
     CGSize textSize = [text sizeWithAttributes:fontAttributes];
-    return CGSizeMake(textSize.width + 10, 34);
+    return CGSizeMake(textSize.width + 10, 44);
 }
 
 

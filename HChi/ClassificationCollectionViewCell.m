@@ -31,22 +31,20 @@ CGRect _classificationCellRecoverRect;
 - (void)classificationVieCellShowAnimate {
     CGRect rect = self.frame;
     _classificationCellRecoverRect = rect;
-    self.textLabel.alpha = 0;
+    self.alpha = 0;
     if (ClassificationViewCellShowAnimate) {
-        rect.origin = CGPointMake(rect.origin.x, rect.origin.y + 100);
+        rect.origin = CGPointMake(rect.origin.x, rect.origin.y + 200);
         self.frame = rect;
     } else {
-        rect.origin = CGPointMake(rect.origin.x, rect.origin.y - 100);
+        rect.origin = CGPointMake(rect.origin.x, rect.origin.y - 10);
+        self.frame = rect;
     }
-    
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0.1 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction animations:^{
         if (rect.origin.y != _classificationCellRecoverRect.origin.y) {
             self.frame = _classificationCellRecoverRect;
         }
-        self.textLabel.alpha = 1;
+        self.alpha = 1;
     } completion:nil];
-//    NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(startAnimate) object:nil];
-//    [thread start];
 }
 
 - (void)startAnimate {

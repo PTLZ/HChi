@@ -22,20 +22,23 @@ CGRect _rootViewCellRecoverRect;
 }
 
 - (void)rootViewCellShowAnimate {
+    CGRect rect = self.frame;
+    _rootViewCellRecoverRect = rect;
+    rect.origin = CGPointMake(rect.origin.x, rect.origin.y + 200);
+    rect.size.height = _rootViewCellRecoverRect.size.height / 2;
+    self.alpha = 0;
     if (RootViewCellShowingAnimate) {
-        CGRect rect = self.frame;
-        _rootViewCellRecoverRect = rect;
-        rect.origin = CGPointMake(rect.origin.x, rect.origin.y + 100);
         self.frame = rect;
-        self.alpha = 0;
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            self.frame = _rootViewCellRecoverRect;
-            self.alpha = 1;
-        }];
     } else {
-        return;
+        self.frame = _rootViewCellRecoverRect;
     }
+    
+    [UIView animateWithDuration:0.5 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        if (rect.origin.y != _rootViewCellRecoverRect.origin.y) {
+            self.frame = _rootViewCellRecoverRect;
+        }
+        self.alpha = 1;
+    } completion:nil];
 }
 
 @end

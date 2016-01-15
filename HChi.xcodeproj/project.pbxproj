@@ -15,12 +15,12 @@
 		D40FDE551C43394100A32500 /* HChiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE541C43394100A32500 /* HChiTests.m */; };
 		D40FDE601C43394100A32500 /* HChiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE5F1C43394100A32500 /* HChiUITests.m */; };
 		D40FDE6F1C433A7900A32500 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE6E1C433A7900A32500 /* RootViewController.m */; };
-		D40FDE781C4342BA00A32500 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE771C4342BA00A32500 /* IssueViewController.m */; };
 		D40FDE7B1C43434D00A32500 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE7A1C43434D00A32500 /* PersonViewController.m */; };
 		D41899811C46311600830952 /* HCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899801C46311600830952 /* HCTabBarController.m */; };
 		D41899841C4634B500830952 /* HCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899831C4634B500830952 /* HCTabBarView.m */; };
 		D41899871C4643C100830952 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899861C4643C100830952 /* CollectionViewLayout.m */; };
 		D418998C1C46524700830952 /* img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D418998B1C46524700830952 /* img1.jpg */; };
+		D430BCE61C49562100B41855 /* IssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D430BCE51C49562100B41855 /* IssueView.m */; };
 		D46E6D191C479CA000DDA35C /* ClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D181C479CA000DDA35C /* ClassificationViewController.m */; };
 		D46E6D1F1C48881B00DDA35C /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D1E1C48881B00DDA35C /* ClassificationCollectionViewCell.m */; };
 		D46E6D221C48882E00DDA35C /* ClassificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D211C48882E00DDA35C /* ClassificationTableViewCell.m */; };
@@ -68,8 +68,6 @@
 		D40FDE611C43394100A32500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40FDE6D1C433A7900A32500 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D40FDE6E1C433A7900A32500 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		D40FDE761C4342BA00A32500 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueViewController.h; sourceTree = "<group>"; };
-		D40FDE771C4342BA00A32500 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueViewController.m; sourceTree = "<group>"; };
 		D40FDE791C43434D00A32500 /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		D40FDE7A1C43434D00A32500 /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		D418997F1C46311600830952 /* HCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTabBarController.h; sourceTree = "<group>"; };
@@ -79,6 +77,8 @@
 		D41899851C4643C100830952 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
 		D41899861C4643C100830952 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
 		D418998B1C46524700830952 /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
+		D430BCE41C49562100B41855 /* IssueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueView.h; sourceTree = "<group>"; };
+		D430BCE51C49562100B41855 /* IssueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueView.m; sourceTree = "<group>"; };
 		D46E6D171C479CA000DDA35C /* ClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationViewController.h; sourceTree = "<group>"; };
 		D46E6D181C479CA000DDA35C /* ClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationViewController.m; sourceTree = "<group>"; };
 		D46E6D1D1C48881B00DDA35C /* ClassificationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionViewCell.h; sourceTree = "<group>"; };
@@ -240,8 +240,8 @@
 		D472719C1C44A3B000FAE8DF /* IssueView */ = {
 			isa = PBXGroup;
 			children = (
-				D40FDE761C4342BA00A32500 /* IssueViewController.h */,
-				D40FDE771C4342BA00A32500 /* IssueViewController.m */,
+				D430BCE41C49562100B41855 /* IssueView.h */,
+				D430BCE51C49562100B41855 /* IssueView.m */,
 			);
 			name = IssueView;
 			sourceTree = "<group>";
@@ -272,8 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				D418998B1C46524700830952 /* img1.jpg */,
-				D47271BE1C44EC7200FAE8DF /* img3.jpg */,
 				D47271C01C44EC7200FAE8DF /* img2.jpg */,
+				D47271BE1C44EC7200FAE8DF /* img3.jpg */,
 			);
 			path = imag;
 			sourceTree = "<group>";
@@ -427,9 +427,9 @@
 			files = (
 				D46E6D1F1C48881B00DDA35C /* ClassificationCollectionViewCell.m in Sources */,
 				D40FDE3F1C43394100A32500 /* AppDelegate.m in Sources */,
+				D430BCE61C49562100B41855 /* IssueView.m in Sources */,
 				D41899841C4634B500830952 /* HCTabBarView.m in Sources */,
 				D40FDE6F1C433A7900A32500 /* RootViewController.m in Sources */,
-				D40FDE781C4342BA00A32500 /* IssueViewController.m in Sources */,
 				D40FDE3C1C43394100A32500 /* main.m in Sources */,
 				D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */,
 				D41899811C46311600830952 /* HCTabBarController.m in Sources */,

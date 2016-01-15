@@ -319,6 +319,58 @@
 	<array>
 		<dict>
 			<key>title</key>
+			<string>口味</string>
+		</dict>
+		<array>
+			<string>酸</string>
+			<string>甜</string>
+			<string>苦</string>
+			<string>辣</string>
+			<string>咸</string>
+			<string>清淡</string>
+			<string>爽口</string>
+			<string>酸甜</string>
+			<string>香甜</string>
+			<string>微辣</string>
+			<string>麻辣</string>
+			<string>酸辣</string>
+			<string>香辣</string>
+			<string>椒盐</string>
+			<string>奶香</string>
+			<string>葱香</string>
+			<string>酱香</string>
+			<string>五香</string>
+			<string>鱼香</string>
+			<string>耗香</string>
+			<string>咖喱味</string>
+			<string>孜然味</string>
+			<string>芥末味</string>
+			<string>黑椒味</string>
+			<string>烧烤味</string>
+			<string>姜汁味</string>
+			<string>茄汁味</string>
+			<string>红油味</string>
+			<string>糖醋味</string>
+			<string>泡椒味</string>
+			<string>蛋黄味</string>
+			<string>怪味</string>
+			<string>芝士味</string>
+			<string>抹茶味</string>
+			<string>芝麻味</string>
+			<string>巧克力味</string>
+			<string>果味</string>
+			<string>草莓味</string>
+			<string>香草味</string>
+			<string>薄荷味</string>
+			<string>橘子味</string>
+			<string>蕃茄味</string>
+			<string>柠檬味</string>
+			<string>苹果味</string>
+		</array>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
 			<string>烘焙甜品</string>
 		</dict>
 		<array>
@@ -714,58 +766,6 @@
 			<string>冬至</string>
 			<string>小寒</string>
 			<string>大寒</string>
-		</array>
-	</array>
-	<array>
-		<dict>
-			<key>title</key>
-			<string>口味</string>
-		</dict>
-		<array>
-			<string>酸</string>
-			<string>甜</string>
-			<string>苦</string>
-			<string>辣</string>
-			<string>咸</string>
-			<string>清淡</string>
-			<string>爽口</string>
-			<string>酸甜</string>
-			<string>香甜</string>
-			<string>微辣</string>
-			<string>麻辣</string>
-			<string>酸辣</string>
-			<string>香辣</string>
-			<string>椒盐</string>
-			<string>奶香</string>
-			<string>葱香</string>
-			<string>酱香</string>
-			<string>五香</string>
-			<string>鱼香</string>
-			<string>耗香</string>
-			<string>咖喱味</string>
-			<string>孜然味</string>
-			<string>芥末味</string>
-			<string>黑椒味</string>
-			<string>烧烤味</string>
-			<string>姜汁味</string>
-			<string>茄汁味</string>
-			<string>红油味</string>
-			<string>糖醋味</string>
-			<string>泡椒味</string>
-			<string>蛋黄味</string>
-			<string>怪味</string>
-			<string>芝士味</string>
-			<string>抹茶味</string>
-			<string>芝麻味</string>
-			<string>巧克力味</string>
-			<string>果味</string>
-			<string>草莓味</string>
-			<string>香草味</string>
-			<string>薄荷味</string>
-			<string>橘子味</string>
-			<string>蕃茄味</string>
-			<string>柠檬味</string>
-			<string>苹果味</string>
 		</array>
 	</array>
 </array>
