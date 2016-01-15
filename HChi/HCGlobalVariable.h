@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCTabBarView.h"
 
 
 extern UIColor * HCColorForSubView;
@@ -17,7 +18,15 @@ extern UIImageView * HCNCBackgroundForSubView;
 extern CAGradientLayer * HCNCBackgroundForRootView;
 extern CGSize ScreenSize;
 
+extern HCTabBarView * HCNCTabBarView;
 
+extern int HCThemeFontSize;
+extern int HCArticleFontSize;
+
+extern BOOL RootViewCellShowingAnimate;
+extern BOOL ClassificationViewCellShowAnimate;
+
+void HCShowTabBarView(BOOL hidden);
 
 
 @interface HCGlobalVariable : NSObject

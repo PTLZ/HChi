@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomViewController.h"
 
-@interface PersonViewController : CustomViewController
+@interface PersonViewController : UIViewController
 
 @property (nonatomic, strong) UITableView * personTableView;
 

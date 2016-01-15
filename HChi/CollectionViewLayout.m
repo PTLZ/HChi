@@ -15,7 +15,6 @@
     [super prepareLayout];
     
     float x1 = self.sectionInset.left;
-    float x2 = self.sectionInset.left;
     int list = 0;
     
     self.allAttributes = [NSMutableArray new];
@@ -48,9 +47,9 @@
                 self.maxY1 += attRect.size.height + 0.5;
             }
         } else {
-            attRect.origin.x = x2;
-            attRect.origin.y = self.maxY2 + self.sectionInset.top;
-            self.maxY2 += attRect.size.height + self.minimumInteritemSpacing;
+            attRect.origin.x = x1;
+            attRect.origin.y = self.maxY1 + self.minimumLineSpacing;
+            self.maxY1 += attRect.size.height + self.minimumInteritemSpacing;
         }
         
         attributes.frame = attRect;

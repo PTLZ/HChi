@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomViewController.h"
 
-@interface IssueViewController : CustomViewController
+@interface IssueViewController : UIViewController
 
 @end

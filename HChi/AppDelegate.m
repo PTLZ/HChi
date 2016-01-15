@@ -12,6 +12,7 @@
 #import "PersonViewController.h"
 #import "HCGlobalVariable.h"
 #import "HCTabBarController.h"
+#import "HCTabBarView.h"
 
 @interface AppDelegate ()
 
@@ -37,9 +38,6 @@
     HCTabBarController * tabBarController = [HCTabBarController new];
     [tabBarController setViewControllers: viewArray];
     
-//    UITabBarController * tabBarController = [UITabBarController new];
-//    [tabBarController setViewControllers: viewArray];
-    
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
@@ -63,9 +61,14 @@
 /// 初始化全局变量
 - (void)initHCGV {
     
+    HCThemeFontSize = 14;
+    HCArticleFontSize = 14;
+    
     ScreenSize = [UIScreen mainScreen].bounds.size;
     
-    HCColorForTheme = [UIColor colorWithRed:0.39 green:0.60 blue:0.0 alpha:1.0];
+    HCNCTabBarView = [[HCTabBarView alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 49, ScreenSize.width, 49)];
+    
+    HCColorForTheme = [UIColor colorWithRed:0.1295 green:0.7433 blue:1.0 alpha:1.0];
     HCColorForSubView = [UIColor colorWithWhite:1.0 alpha:1.0];
     HCColorForRootView = [UIColor colorWithWhite:0.0 alpha:0.6];
     
@@ -83,6 +86,7 @@
     HCNCBackgroundForSubView = [UIImageView new];
     HCNCBackgroundForSubView.backgroundColor = HCColorForSubView;
     HCNCBackgroundForSubView.frame = CGRectMake(0, -20, ScreenSize.width, 64);
+    
     
 }
 

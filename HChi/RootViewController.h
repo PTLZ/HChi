@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomViewController.h"
 
-@interface RootViewController : CustomViewController
+@interface RootViewController : UIViewController
 
 @property (nonatomic, strong) UITableView * rootTableView;
 

@@ -129,14 +129,6 @@ UILabel * userNickName;
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
-
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return [self createHeadView];
-//    }
-//    return [UIView new];
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return headViewRect.size.height + 20;
@@ -173,14 +165,5 @@ UILabel * userNickName;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
