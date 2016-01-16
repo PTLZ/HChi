@@ -55,6 +55,8 @@ CGRect _recoverProductRect;
         _productRect = _issueBackgroundView.uploadProductButton.frame;
         _recoverProductRect = _productRect;
         _productRect.origin.y = ScreenSize.height;
+        _productRect.origin.x = ScreenSize.width/2 + ScreenSize.width/2/2/2;
+        _productRect.size = CGSizeMake(0, 0);
         _issueBackgroundView.uploadProductButton.frame = _productRect;
         
         
