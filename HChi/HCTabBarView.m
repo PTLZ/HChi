@@ -29,28 +29,46 @@ CGPoint tabBarIconPoint;
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         tabBarIconSize = CGSizeMake(30, 30);
-        tabBarIconPoint = CGPointMake(0, 2);
+        tabBarIconPoint = CGPointMake(0, 0);
+        
+        CGRect rootViewButtonRect = CGRectMake(ScreenSize.width / 2 - ScreenSize.width / 4 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height);
+        CGRect issueViewButtonRect = CGRectMake(ScreenSize.width / 2 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height);
+        CGRect personViewButtonRect = CGRectMake(ScreenSize.width / 2 + ScreenSize.width / 4 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height);
         // root View
-        _selectRootViewButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2 - ScreenSize.width / 4 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height)];
+        _selectRootViewButton = [[UIButton alloc] initWithFrame:rootViewButtonRect];
         _selectRootViewButton.backgroundColor = [UIColor blackColor];
         
         // issue View
-        _selectIssueViewButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height)];
+        _selectIssueViewButton = [[UIButton alloc] initWithFrame:issueViewButtonRect];
         _selectIssueViewButton.backgroundColor = [UIColor blackColor];
         
         // person View
-        _selectPersonViewButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2 + ScreenSize.width / 4 - tabBarIconSize.width / 2, tabBarIconPoint.y, tabBarIconSize.width, tabBarIconSize.height)];
+        _selectPersonViewButton = [[UIButton alloc] initWithFrame:personViewButtonRect];
         _selectPersonViewButton.backgroundColor = [UIColor blackColor];
         
         
         [self addSubview:_selectRootViewButton];
         [self addSubview:_selectIssueViewButton];
         [self addSubview:_selectPersonViewButton];
+        
+        _selectRootViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(rootViewButtonRect.origin.x, rootViewButtonRect.origin.y + rootViewButtonRect.size.height, 40, 22)];
+        _selectRootViewLabel.textColor = HCColorForTheme;
+        [self setFontWithLabel:_selectRootViewLabel withTitle:@"有雅兴"];
+        [self addSubview:_selectRootViewLabel];
+        
+        _selectPersonViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(personViewButtonRect.origin.x, rootViewButtonRect.origin.y + rootViewButtonRect.size.height, 40, 22)];
+        _selectPersonViewLabel.textColor = HCColorForTheme;
+        [self setFontWithLabel:_selectPersonViewLabel withTitle:@"个人"];
+        [self addSubview:_selectPersonViewLabel];
     }
     return self;
 }
 
-
+- (void)setFontWithLabel:(UILabel *)label withTitle:(NSString *)title {
+    label.font = [UIFont systemFontOfSize:10];
+    label.text = title;
+    label.textAlignment = NSTextAlignmentCenter;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

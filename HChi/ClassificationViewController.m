@@ -11,6 +11,7 @@
 #import "TableViewDataSource.h"
 #import "ClassificationTableViewCell.h"
 #import "ClassificationCollectionViewCell.h"
+#import "MenuListViewController.h"
 
 static NSString * const ClassificationTableViewCellIdentifier = @"ClassificationTableViewCell";
 static NSString * const ClassificationCollectionViewCellIdentifier = @"ClassificationCollectionViewCell";
@@ -32,6 +33,7 @@ CGFloat _classificationViewOldOffset = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self initView];
 }
 
@@ -41,23 +43,28 @@ CGFloat _classificationViewOldOffset = 0;
 #pragma mark 创建navView(UIView)
     UIView * navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 64)];
     navView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4];
-
+    
     UIBlurEffect * blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView * effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectView.frame = navView.frame;
-
+    
     [self.view addSubview:effectView];
     [self.view addSubview:navView];
     
 #pragma mark 创建navView中的内容 返回按钮
-    UIButton * backButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width - 60 - 5, 44/2 + 20 - 10, 60, 20)];
+    UIButton * backButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width - 60, 44/2 + 20 - 10, 60, 20)];
     [backButton setTitleColor:HCColorForTheme forState:UIControlStateNormal];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
-    backButton.titleLabel.font = [UIFont systemFontOfSize:HCThemeFontSize];
+    backButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [backButton addTarget:self action:@selector(backViewController) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backButton];
     
 #pragma mark 创建搜索框
+    UISearchBar * searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(5, 44/2 + 20 - 17, ScreenSize.width - 60, 34)];
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchBar.placeholder = @"搜索";
+    //searchBar.showsCancelButton = true;
+    [navView addSubview:searchBar];
 #pragma mark 创建tableView
     CGRect cTableViewRect = CGRectMake(0, 64, ScreenSize.width / 4, ScreenSize.height);
     _classificationTableView = [[UITableView alloc] initWithFrame:cTableViewRect style:UITableViewStylePlain];
@@ -131,6 +138,7 @@ CGFloat _classificationViewOldOffset = 0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ClassificationCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:ClassificationCollectionViewCellIdentifier forIndexPath:indexPath];
+    
     cell.textLabel.text = _collectionViewCellDataArray[indexPath.row];
     
     [cell classificationVieCellShowAnimate];
@@ -142,7 +150,9 @@ CGFloat _classificationViewOldOffset = 0;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:true];
     ClassificationCollectionViewCell * cell = (ClassificationCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    MenuListViewController * mlVC = [MenuListViewController new];
+    mlVC.navTitleText = cell.textLabel.text;
+    [self presentViewController:mlVC animated:true completion:nil];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -165,13 +175,11 @@ CGFloat _classificationViewOldOffset = 0;
     
     _classificationViewOldOffset = y;
     // 改变导航栏
-    /*
-     if (y > scrollViewRect.size.height - 64) {
-     UIColor * color = (UIColor *)HCNCBackgroundForRootView.backgroundColor;
-     color = [color colorWithAlphaComponent:1.0];
-     HCNCBackgroundForRootView.backgroundColor = color.CGColor;
-     }
-     */
+//    if (y > scrollViewRect.size.height - 64) {
+//        UIColor * color = (UIColor *)HCNCBackgroundForRootView.backgroundColor;
+//        color = [color colorWithAlphaComponent:1.0];
+//        HCNCBackgroundForRootView.backgroundColor = color.CGColor;
+//    }
 }
 
 

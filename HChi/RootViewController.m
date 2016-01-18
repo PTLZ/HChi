@@ -18,10 +18,13 @@ static NSString * const RootViewCellIdentifier = @"RootCell";
 @interface RootViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, CollectionViewFlowLayoutProtocol>
 
 @property (nonatomic, strong) TableViewDataSource * rootViewCellDataSource;
+@property NSArray * imageArray;
+@property NSMutableArray * rootCellDataArray;
 
 @end
 
 @implementation RootViewController
+
 
 /// 每日推荐 scroll View
 UIScrollView * _dailyRecommendScrollView;
@@ -44,6 +47,7 @@ CGFloat _rootViewOldOffset = 0;
     self = [super init];
     if (self) {
         self.title = @"有雅兴";
+//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
     return self;
 }
@@ -51,14 +55,14 @@ CGFloat _rootViewOldOffset = 0;
 #pragma mark 加载完毕 View did load
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSArray * paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"jpg" inDirectory:@"img"];
+    _imageArray = [[NSArray alloc] initWithArray:paths];
+    
     self.automaticallyAdjustsScrollViewInsets = false;
     [self.navigationController.navigationBar.layer insertSublayer:HCNCBackgroundForRootView atIndex:0];
     [self initView];
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect rect = HCNCTabBarView.frame;
-        rect.origin.y = ScreenSize.height - 49;
-        HCNCTabBarView.frame = rect;
-    }];
+    
+    
 }
 
 #pragma mark 初始化视图: 给视图添加内容
@@ -91,10 +95,14 @@ CGFloat _rootViewOldOffset = 0;
     _rootCollectionView.alwaysBounceVertical = true;
     // 隐藏右侧滚动条
     _rootCollectionView.showsVerticalScrollIndicator = false;
-    _rootCollectionView.backgroundColor = [UIColor redColor];
+    _rootCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     _rootCollectionView.contentSize = CGSizeMake(ScreenSize.width, ScreenSize.height*2);
+    
     [_rootCollectionView registerClass:[RootViewCollectionViewCell class] forCellWithReuseIdentifier:RootViewCellIdentifier];
+    [_rootCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    
     [self.view addSubview:_rootCollectionView];
     
     #pragma mark 添加ScrollView: 每日推荐
@@ -105,21 +113,22 @@ CGFloat _rootViewOldOffset = 0;
     _dailyRecommendScrollView.showsHorizontalScrollIndicator = false;
     _dailyRecommendScrollView.delegate = self;
     
-    for (int i = 0; i<3; i++) {
-        UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"img%d.jpg", i + 1]];
-        UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(ScreenSize.width * i, 0, ScreenSize.width, _scrollViewRect.size.height);
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.clipsToBounds = true;
-        [_dailyRecommendScrollView addSubview:imageView];
-        [_dailyRecommendScrollViewContents addObject:imageView];
+    int  imageNumber = 0;
+    for (int i = 0; i<_imageArray.count; i++) {
+        NSString * imagePath = _imageArray[i];
+        NSString * imageName = [imagePath lastPathComponent];
+        if ([imageName hasPrefix:@"root_scrollView_IMG"]) {
+            UIImage * image = [UIImage imageWithContentsOfFile:_imageArray[i]];
+            UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(ScreenSize.width * imageNumber, 0, ScreenSize.width, _scrollViewRect.size.height);
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = true;
+            [_dailyRecommendScrollView addSubview:imageView];
+            [_dailyRecommendScrollViewContents addObject:imageView];
+            imageNumber ++;
+        }
     }
-    UIImageView * imageView = (UIImageView *)_dailyRecommendScrollViewContents[0];
-    imageView.image =[UIImage imageNamed:@"img1.jpg"];
-    imageView.frame = CGRectMake(ScreenSize.width * 3, 0, ScreenSize.width, _scrollViewRect.size.height);
-    [_dailyRecommendScrollView addSubview:imageView];
-    [_dailyRecommendScrollViewContents addObject:imageView];
-    [self.view addSubview:_dailyRecommendScrollView];
+//    [self.view addSubview:_dailyRecommendScrollView];
     
     
     #pragma mark 添加搜索框
@@ -143,11 +152,30 @@ CGFloat _rootViewOldOffset = 0;
     }
     
     [self.view addSubview:_searchBar];
+    
+    
+//    _rootCellDataArray = [[NSMutableArray alloc] initWithArray:@[@[@""],@[@""],@[@""]]];
+//    NSString * path = [[NSBundle mainBundle] pathForResource:@"Classification" ofType:@"plist"];
+//    NSArray * array = [[NSArray alloc] initWithContentsOfFile:path];
+//    for (int i = 0; i < array.count; i++) {
+//        NSArray * arr = array[i];
+//        NSDictionary * dic = arr[0];
+//        NSString * title = dic[@"title"];
+//        [_rootCellDataArray addObject:title];
+//    }
+//    
+//    for (int i = 0; i<30; i++) {
+//        [_rootCellDataArray addObject:[NSString stringWithFormat:@"%d",i]];
+//    }
+    
+    _rootCellDataArray = [NSMutableArray new];
+    for (int i = 0; i<50; i++) {
+        [_rootCellDataArray addObject:[NSString stringWithFormat:@"%d", i + 1]];
+    }
 }
 
 #pragma TODO
 - (void)calassification {
-    NSLog(@"点击了分类按钮");
     HCShowTabBarView(false);
     [self.navigationController presentViewController:[ClassificationViewController new] animated:true completion:nil];
 }
@@ -163,12 +191,23 @@ CGFloat _rootViewOldOffset = 0;
 }
 #pragma mark 渲染cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    RootViewCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RootViewCellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor lightTextColor];
+//    if (indexPath.row >= 3 && indexPath.row < 18) {
     
-    [cell rootViewCellShowAnimate];
-    return cell;
+        RootViewCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:RootViewCellIdentifier forIndexPath:indexPath];
+        
+        cell.menuListLabel.text = _rootCellDataArray[indexPath.row];
+    
+        [cell rootViewCellShowAnimate];
+        return cell;
+
+//    } else {
+//
+//        UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+//        return cell;
+//        
+//    }
+    
 }
 
 
@@ -179,9 +218,9 @@ CGFloat _rootViewOldOffset = 0;
     int cureentPage = (int)(_dailyRecommendScrollView.contentOffset.x / ScreenSize.width);
     _cureentImage = [self backScrollViewContent:cureentPage];
     
-    if (cureentPage >= 3) {
-        _dailyRecommendScrollView.contentOffset = CGPointMake(0, 0);
-    }
+//    if (cureentPage >= 2) {
+//        _dailyRecommendScrollView.contentOffset = CGPointMake(0, 0);
+//    }
     
 }
 
@@ -202,8 +241,13 @@ CGFloat _rootViewOldOffset = 0;
      */
 }
 - (UIImageView *)backScrollViewContent:(int)index {
+    if (index > _dailyRecommendScrollViewContents.count - 1) {
+        return _dailyRecommendScrollViewContents[0];
+    }
     return _dailyRecommendScrollViewContents[index];
 }
+
+UIVisualEffectView * _effectView;
 #pragma mark 滑动时改变位置信息
 - (void)resetHeadViewFrame:(CGFloat)y {
     
@@ -234,6 +278,21 @@ CGFloat _rootViewOldOffset = 0;
         searchBarFrame.origin.y = _searchBarRect.origin.y + -y;
         _searchBar.frame = searchBarFrame;
         
+        if (HCNCBackgroundForRootView.hidden == false) {
+            HCNCBackgroundForRootView.hidden = true;
+            _effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+            _effectView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            _effectView.frame = CGRectMake(0, 0, ScreenSize.width, 64);
+            [self.view addSubview:_effectView];
+            [UIView animateWithDuration:0.5 animations:^{
+                _effectView.contentView.alpha = 1;
+            }];
+        }
+        
+        if ([self.navigationController.navigationBar barStyle] == UIBarStyleBlack) {
+            [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+        }
+        
     } else {
         
         frame.origin.y = -y;
@@ -241,6 +300,22 @@ CGFloat _rootViewOldOffset = 0;
         
         searchBarFrame.origin.y = _searchBarRect.origin.y + -y;
         _searchBar.frame = searchBarFrame;
+        
+        [self preferredStatusBarStyle];
+        if (HCNCBackgroundForRootView.hidden == true) {
+            HCNCBackgroundForRootView.hidden = false;
+            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//                _effectView.contentView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [_effectView removeFromSuperview];
+                _effectView = nil;
+                [self.navigationItem.titleView removeFromSuperview];
+            }];
+        }
+        
+        if ([self.navigationController.navigationBar barStyle] == UIBarStyleDefault) {
+            [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+        }
     }
     
     
@@ -271,6 +346,10 @@ CGFloat _rootViewOldOffset = 0;
     }
 }
 
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

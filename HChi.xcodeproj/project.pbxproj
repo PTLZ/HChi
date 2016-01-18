@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		99F4672A1C477A25006DA752 /* Classification.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99F467291C477A25006DA752 /* Classification.plist */; };
+		D403780D1C4A51FD00BD7890 /* Person.plist in Resources */ = {isa = PBXBuildFile; fileRef = D403780C1C4A51FD00BD7890 /* Person.plist */; };
 		D40FDE3C1C43394100A32500 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE3B1C43394100A32500 /* main.m */; };
 		D40FDE3F1C43394100A32500 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40FDE3E1C43394100A32500 /* AppDelegate.m */; };
 		D40FDE471C43394100A32500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40FDE461C43394100A32500 /* Assets.xcassets */; };
@@ -19,18 +20,18 @@
 		D41899811C46311600830952 /* HCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899801C46311600830952 /* HCTabBarController.m */; };
 		D41899841C4634B500830952 /* HCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899831C4634B500830952 /* HCTabBarView.m */; };
 		D41899871C4643C100830952 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D41899861C4643C100830952 /* CollectionViewLayout.m */; };
-		D418998C1C46524700830952 /* img1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D418998B1C46524700830952 /* img1.jpg */; };
 		D430BCE61C49562100B41855 /* IssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D430BCE51C49562100B41855 /* IssueView.m */; };
 		D46E6D191C479CA000DDA35C /* ClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D181C479CA000DDA35C /* ClassificationViewController.m */; };
 		D46E6D1F1C48881B00DDA35C /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D1E1C48881B00DDA35C /* ClassificationCollectionViewCell.m */; };
 		D46E6D221C48882E00DDA35C /* ClassificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D46E6D211C48882E00DDA35C /* ClassificationTableViewCell.m */; };
 		D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D47271961C449A4A00FAE8DF /* RootViewCell.xib */; };
-		D47271CC1C44EC7200FAE8DF /* img3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271BE1C44EC7200FAE8DF /* img3.jpg */; };
-		D47271CE1C44EC7200FAE8DF /* img2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D47271C01C44EC7200FAE8DF /* img2.jpg */; };
 		D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D47271DC1C44EE3400FAE8DF /* PersonViewCell.m */; };
 		D49F2BE41C436CDE009644F1 /* RootView.plist in Resources */ = {isa = PBXBuildFile; fileRef = D49F2BE31C436CDE009644F1 /* RootView.plist */; };
 		D49F2BF41C43827C009644F1 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F2BF31C43827C009644F1 /* TableViewDataSource.m */; };
 		D49F2BF71C4384A3009644F1 /* HCGlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F2BF61C4384A3009644F1 /* HCGlobalVariable.m */; };
+		D4CD6B2F1C4C78FA006D3113 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B2E1C4C78FA006D3113 /* PersonInfoViewController.m */; };
+		D4CD6B321C4C7BA4006D3113 /* MenuListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B311C4C7BA4006D3113 /* MenuListViewController.m */; };
+		D4CD6B351C4C7D06006D3113 /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B341C4C7D06006D3113 /* MenuListTableViewCell.m */; };
 		D4E8C77B1C48D13400FC49E2 /* RootViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8C77A1C48D13400FC49E2 /* RootViewCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		99F467291C477A25006DA752 /* Classification.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Classification.plist; sourceTree = "<group>"; };
+		D403780C1C4A51FD00BD7890 /* Person.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Person.plist; sourceTree = "<group>"; };
 		D40FDE371C43394100A32500 /* HChi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HChi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40FDE3B1C43394100A32500 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D40FDE3D1C43394100A32500 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,7 +78,6 @@
 		D41899831C4634B500830952 /* HCTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTabBarView.m; sourceTree = "<group>"; };
 		D41899851C4643C100830952 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
 		D41899861C4643C100830952 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
-		D418998B1C46524700830952 /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
 		D430BCE41C49562100B41855 /* IssueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueView.h; sourceTree = "<group>"; };
 		D430BCE51C49562100B41855 /* IssueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueView.m; sourceTree = "<group>"; };
 		D46E6D171C479CA000DDA35C /* ClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationViewController.h; sourceTree = "<group>"; };
@@ -86,8 +87,6 @@
 		D46E6D201C48882E00DDA35C /* ClassificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationTableViewCell.h; sourceTree = "<group>"; };
 		D46E6D211C48882E00DDA35C /* ClassificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationTableViewCell.m; sourceTree = "<group>"; };
 		D47271961C449A4A00FAE8DF /* RootViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewCell.xib; sourceTree = "<group>"; };
-		D47271BE1C44EC7200FAE8DF /* img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img3.jpg; sourceTree = "<group>"; };
-		D47271C01C44EC7200FAE8DF /* img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img2.jpg; sourceTree = "<group>"; };
 		D47271DB1C44EE3400FAE8DF /* PersonViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewCell.h; sourceTree = "<group>"; };
 		D47271DC1C44EE3400FAE8DF /* PersonViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewCell.m; sourceTree = "<group>"; };
 		D49F2BE31C436CDE009644F1 /* RootView.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RootView.plist; sourceTree = "<group>"; };
@@ -95,6 +94,12 @@
 		D49F2BF31C43827C009644F1 /* TableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewDataSource.m; sourceTree = "<group>"; };
 		D49F2BF51C4384A3009644F1 /* HCGlobalVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCGlobalVariable.h; sourceTree = "<group>"; };
 		D49F2BF61C4384A3009644F1 /* HCGlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCGlobalVariable.m; sourceTree = "<group>"; };
+		D4CD6B2D1C4C78FA006D3113 /* PersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoViewController.h; sourceTree = "<group>"; };
+		D4CD6B2E1C4C78FA006D3113 /* PersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoViewController.m; sourceTree = "<group>"; };
+		D4CD6B301C4C7BA4006D3113 /* MenuListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuListViewController.h; sourceTree = "<group>"; };
+		D4CD6B311C4C7BA4006D3113 /* MenuListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListViewController.m; sourceTree = "<group>"; };
+		D4CD6B331C4C7D06006D3113 /* MenuListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuListTableViewCell.h; sourceTree = "<group>"; };
+		D4CD6B341C4C7D06006D3113 /* MenuListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListTableViewCell.m; sourceTree = "<group>"; };
 		D4E8C7791C48D13400FC49E2 /* RootViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewCollectionViewCell.h; sourceTree = "<group>"; };
 		D4E8C77A1C48D13400FC49E2 /* RootViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +168,9 @@
 		D40FDE3A1C43394100A32500 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D47271BD1C44EC7200FAE8DF /* imag */,
+				D49F2BE31C436CDE009644F1 /* RootView.plist */,
+				99F467291C477A25006DA752 /* Classification.plist */,
+				D403780C1C4A51FD00BD7890 /* Person.plist */,
 				D40FDE3B1C43394100A32500 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -210,8 +217,6 @@
 				D49F2BF31C43827C009644F1 /* TableViewDataSource.m */,
 				D472719E1C44A3CE00FAE8DF /* RootViewCell */,
 				D47271DA1C44EE1E00FAE8DF /* PersonViewCell */,
-				D49F2BE31C436CDE009644F1 /* RootView.plist */,
-				99F467291C477A25006DA752 /* Classification.plist */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -233,6 +238,8 @@
 				D41899861C4643C100830952 /* CollectionViewLayout.m */,
 				D46E6D171C479CA000DDA35C /* ClassificationViewController.h */,
 				D46E6D181C479CA000DDA35C /* ClassificationViewController.m */,
+				D4CD6B301C4C7BA4006D3113 /* MenuListViewController.h */,
+				D4CD6B311C4C7BA4006D3113 /* MenuListViewController.m */,
 			);
 			name = RootView;
 			sourceTree = "<group>";
@@ -251,6 +258,8 @@
 			children = (
 				D40FDE791C43434D00A32500 /* PersonViewController.h */,
 				D40FDE7A1C43434D00A32500 /* PersonViewController.m */,
+				D4CD6B2D1C4C78FA006D3113 /* PersonInfoViewController.h */,
+				D4CD6B2E1C4C78FA006D3113 /* PersonInfoViewController.m */,
 			);
 			name = PersonView;
 			sourceTree = "<group>";
@@ -268,21 +277,13 @@
 			name = RootViewCell;
 			sourceTree = "<group>";
 		};
-		D47271BD1C44EC7200FAE8DF /* imag */ = {
-			isa = PBXGroup;
-			children = (
-				D418998B1C46524700830952 /* img1.jpg */,
-				D47271C01C44EC7200FAE8DF /* img2.jpg */,
-				D47271BE1C44EC7200FAE8DF /* img3.jpg */,
-			);
-			path = imag;
-			sourceTree = "<group>";
-		};
 		D47271DA1C44EE1E00FAE8DF /* PersonViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				D47271DB1C44EE3400FAE8DF /* PersonViewCell.h */,
 				D47271DC1C44EE3400FAE8DF /* PersonViewCell.m */,
+				D4CD6B331C4C7D06006D3113 /* MenuListTableViewCell.h */,
+				D4CD6B341C4C7D06006D3113 /* MenuListTableViewCell.m */,
 			);
 			name = PersonViewCell;
 			sourceTree = "<group>";
@@ -393,14 +394,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47271CC1C44EC7200FAE8DF /* img3.jpg in Resources */,
 				99F4672A1C477A25006DA752 /* Classification.plist in Resources */,
 				D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */,
-				D418998C1C46524700830952 /* img1.jpg in Resources */,
 				D40FDE4A1C43394100A32500 /* LaunchScreen.storyboard in Resources */,
+				D403780D1C4A51FD00BD7890 /* Person.plist in Resources */,
 				D49F2BE41C436CDE009644F1 /* RootView.plist in Resources */,
 				D40FDE471C43394100A32500 /* Assets.xcassets in Resources */,
-				D47271CE1C44EC7200FAE8DF /* img2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,13 +429,16 @@
 				D430BCE61C49562100B41855 /* IssueView.m in Sources */,
 				D41899841C4634B500830952 /* HCTabBarView.m in Sources */,
 				D40FDE6F1C433A7900A32500 /* RootViewController.m in Sources */,
+				D4CD6B321C4C7BA4006D3113 /* MenuListViewController.m in Sources */,
 				D40FDE3C1C43394100A32500 /* main.m in Sources */,
 				D47271DD1C44EE3400FAE8DF /* PersonViewCell.m in Sources */,
+				D4CD6B2F1C4C78FA006D3113 /* PersonInfoViewController.m in Sources */,
 				D41899811C46311600830952 /* HCTabBarController.m in Sources */,
 				D4E8C77B1C48D13400FC49E2 /* RootViewCollectionViewCell.m in Sources */,
 				D41899871C4643C100830952 /* CollectionViewLayout.m in Sources */,
 				D49F2BF41C43827C009644F1 /* TableViewDataSource.m in Sources */,
 				D40FDE7B1C43434D00A32500 /* PersonViewController.m in Sources */,
+				D4CD6B351C4C7D06006D3113 /* MenuListTableViewCell.m in Sources */,
 				D49F2BF71C4384A3009644F1 /* HCGlobalVariable.m in Sources */,
 				D46E6D191C479CA000DDA35C /* ClassificationViewController.m in Sources */,
 				D46E6D221C48882E00DDA35C /* ClassificationTableViewCell.m in Sources */,

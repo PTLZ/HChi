@@ -24,10 +24,8 @@
     // Override point for customization after application launch.
     
     
-    
-    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    
     [self initHCGV];
+    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
     
     UINavigationController * rootView =[[UINavigationController alloc] initWithRootViewController: [RootViewController new]];
 //    UINavigationController * issueView = [[UINavigationController alloc] initWithRootViewController: [UIPageViewController new]];

@@ -10,11 +10,16 @@
 
 @interface HCTabBarView : UIView
 
-/// root View 按钮
+/// root View 按钮 与 标签
 @property (nonatomic, strong) UIButton * selectRootViewButton;
-/// issue View 按钮
+@property (nonatomic, strong) UILabel * selectRootViewLabel;
+/// issue View 按钮 与 标签
 @property (nonatomic, strong) UIButton * selectIssueViewButton;
-/// person View 按钮
+@property (nonatomic, strong) UILabel * selectIssueViewLabel;
+/// person View 按钮 与 标签
 @property (nonatomic, strong) UIButton * selectPersonViewButton;
+@property (nonatomic, strong) UILabel * selectPersonViewLabel;
+
+
 
 @end

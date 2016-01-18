@@ -10,12 +10,14 @@
 #import "HCGlobalVariable.h"
 #import "TableViewDataSource.h"
 #import "PersonViewCell.h"
+#import "PersonInfoViewController.h"
 
 static NSString * const PersonViewCellIdentifier = @"PersonCell";
 
 @interface PersonViewController ()<UITableViewDelegate>
 
 @property (nonatomic, strong) TableViewDataSource * personViewCellDataSource;
+@property NSArray * personViewCellDataArray;
 
 @end
 
@@ -48,13 +50,15 @@ UILabel * userNickName;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = false;
-    
+
     [self initView];
     [self createHeadView];
+    
 }
 
 #pragma mark 创建头部视图
 - (void)createHeadView {
+    headViewRect = CGRectMake(0, 0, ScreenSize.width, 200);
     
     headView = [[UIView alloc] initWithFrame:headViewRect];
     imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img1.jpg"]];
@@ -84,7 +88,7 @@ UILabel * userNickName;
     userNickName.textAlignment = NSTextAlignmentCenter;
     userNickName.font = [UIFont systemFontOfSize:14];
     userNickName.textColor = [UIColor whiteColor];
-    userNickName.text = @"菩提老祖";
+    userNickName.text = @"菩提老组";
     [effectView addSubview:userNickName];
 }
 
@@ -96,8 +100,6 @@ UILabel * userNickName;
 #pragma mark 初始化view
 - (void)initView {
     
-    headViewRect = CGRectMake(0, 0, ScreenSize.width, 200);
-    
     #pragma mark 设置列表信息
     _personTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height) style:UITableViewStyleGrouped];
     
@@ -105,7 +107,10 @@ UILabel * userNickName;
         [personCell configureCellWithDic:dic];
     };
     
-    self.personViewCellDataSource = [[TableViewDataSource alloc] initWithItems:@[@[@{@"title":@"nickName"}]]
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"Person" ofType:@"plist"];
+    _personViewCellDataArray = [[NSArray alloc] initWithContentsOfFile:path];
+    
+    self.personViewCellDataSource = [[TableViewDataSource alloc] initWithItems:_personViewCellDataArray
                                                                 cellIdentifier:PersonViewCellIdentifier
                                                                      cellBlock:personViewCellConfigureBlock];
     
@@ -127,6 +132,28 @@ UILabel * userNickName;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+    PersonViewCell * cell = (PersonViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString * title = cell.textLabel.text;
+    if ([title  isEqual: @"个人信息"]) {
+        [self.navigationController pushViewController:[PersonInfoViewController new] animated:true];
+    } else if ([title isEqualToString:@"上传作品"]) {
+        
+    } else if ([title isEqualToString:@"上传菜谱"]) {
+        
+    } else if ([title isEqualToString:@"我的积分"]) {
+        
+    } else if ([title isEqualToString:@"我的收藏"]) {
+        
+    } else {
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定退出登录?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * cancelButton = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction * okButton = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"退出登录");
+        }];
+        [alert addAction:cancelButton];
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:true completion:nil];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -136,6 +163,9 @@ UILabel * userNickName;
     return 10;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 5;
+}
 
 #pragma mark- UIScrollView
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
