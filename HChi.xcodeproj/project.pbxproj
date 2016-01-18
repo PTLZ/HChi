@@ -32,6 +32,7 @@
 		D4CD6B2F1C4C78FA006D3113 /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B2E1C4C78FA006D3113 /* PersonInfoViewController.m */; };
 		D4CD6B321C4C7BA4006D3113 /* MenuListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B311C4C7BA4006D3113 /* MenuListViewController.m */; };
 		D4CD6B351C4C7D06006D3113 /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CD6B341C4C7D06006D3113 /* MenuListTableViewCell.m */; };
+		D4E7DDC61C4CFFF900B31DA6 /* img in Resources */ = {isa = PBXBuildFile; fileRef = D4E7DDC51C4CFFF900B31DA6 /* img */; };
 		D4E8C77B1C48D13400FC49E2 /* RootViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8C77A1C48D13400FC49E2 /* RootViewCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		D4CD6B311C4C7BA4006D3113 /* MenuListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListViewController.m; sourceTree = "<group>"; };
 		D4CD6B331C4C7D06006D3113 /* MenuListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuListTableViewCell.h; sourceTree = "<group>"; };
 		D4CD6B341C4C7D06006D3113 /* MenuListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListTableViewCell.m; sourceTree = "<group>"; };
+		D4E7DDC51C4CFFF900B31DA6 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		D4E8C7791C48D13400FC49E2 /* RootViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewCollectionViewCell.h; sourceTree = "<group>"; };
 		D4E8C77A1C48D13400FC49E2 /* RootViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +173,7 @@
 				D49F2BE31C436CDE009644F1 /* RootView.plist */,
 				99F467291C477A25006DA752 /* Classification.plist */,
 				D403780C1C4A51FD00BD7890 /* Person.plist */,
+				D4E7DDC51C4CFFF900B31DA6 /* img */,
 				D40FDE3B1C43394100A32500 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -396,6 +399,7 @@
 			files = (
 				99F4672A1C477A25006DA752 /* Classification.plist in Resources */,
 				D47271971C449A4A00FAE8DF /* RootViewCell.xib in Resources */,
+				D4E7DDC61C4CFFF900B31DA6 /* img in Resources */,
 				D40FDE4A1C43394100A32500 /* LaunchScreen.storyboard in Resources */,
 				D403780D1C4A51FD00BD7890 /* Person.plist in Resources */,
 				D49F2BE41C436CDE009644F1 /* RootView.plist in Resources */,
